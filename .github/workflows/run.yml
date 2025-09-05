@@ -37,7 +37,7 @@ jobs:
           tag_name: latest
           github_token: ${{ secrets.GITHUB_TOKEN }}
           delete_release: true
-          repo: 1molCu/geodatabuild
+          repo: 1molCu/geosite-build
 
       - name: Checkout v2fly/domain-list-community
         uses: actions/checkout@v4
@@ -51,12 +51,12 @@ jobs:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
 
-      - name: Checkout DustinWin/clash-geoip
+      - name: Checkout Loyalsoldier/geoip/
         uses: actions/checkout@v4
         with:
-          repository: DustinWin/clash-geoip
+          repository: Loyalsoldier/geoip
           ref: release
-          path: clash-geoip
+          path: geoip
 
       - name: Setup Go
         uses: actions/setup-go@v4
@@ -312,7 +312,7 @@ jobs:
 
       - name: Get geoip relative files
         run: |
-          cp -f ./clash-geoip/*.mmdb ./clash-geoip/*.dat ./clash-geoip/*.metadb ./clash-geoip/*.db ./publish
+          cp -f ./geoip/*.mmdb ./geoip/*.dat ./publish
 
       - name: Build db and metadb file
         env:
