@@ -116,10 +116,17 @@
 ⑤ `geoip:private` 源采用 [blackmatrix7/ios_rule_script/Lan](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Lan)（IP 部分）  
 ⑥ `geoip:cn` 源采用 [GeoLite2/cn.txt](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data)、[17mon/china_ip_list](https://github.com/17mon/china_ip_list)、[gaoyifan/china-operator-ip](https://github.com/gaoyifan/china-operator-ip) 和 [blackmatrix7/ios_rule_script/ChinaIPs/ChinaIPs_IP.txt](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaIPs) 组合
 
-## 7. ads.dat
+## 7. geoip-lite.dat、Country-lite.mmdb、geoip-lite.metadb 和 geoip-lite.db
+分别在 geoip.dat、Country.mmdb、geoip.metadb 和 geoip.db 的基础上去除了流媒体，**有且仅有如下分类**：
+```
+  - GEOIP,telegram,✈️ Telegram
+  - GEOIP,private,🏠 私有网络
+  - GEOIP,cn,🇨🇳 国内 IP
+```
+## 8. ads.dat
 单独生成广告数据，数据源来自[privacy-protection-tools/anti-AD/anti-ad-domains.txt](https://github.com/privacy-protection-tools/anti-AD)
 
-## 8. user.yaml
+## 9. user.yaml
 ① 每天早上 3 点（北京时间）自动构建生成  
 ② 添加[常用 fake-ip 地址过滤列表](https://github.com/juewuy/ShellClash/blob/master/public/fake_ip_filter.list)到 fake-ip-user.yaml 内的 `fake-ip-filter` 中，提高兼容性  
 ③ 添加 [TrackersList](https://trackerslist.com)（udp 域名）到 fake-ip-user.yaml 内的 `fake-ip-filter` 中，防止 [BT 下载](https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases)无法连接 TrackersList UDP 协议  
