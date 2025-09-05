@@ -51,10 +51,10 @@ jobs:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
 
-      - name: Checkout Loyalsoldier/geoip/
+      - name: Checkout DustinWin/geoip
         uses: actions/checkout@v4
         with:
-          repository: Loyalsoldier/geoip
+          repository: DustinWin/geoip
           ref: release
           path: geoip
 
@@ -312,7 +312,7 @@ jobs:
 
       - name: Get geoip relative files
         run: |
-          cp -f ./geoip/*.mmdb ./geoip/*.dat ./publish
+          cp -f ./geoip/*.mmdb ./geoip/*.dat ./geoip/*.db ./geoip/*.metadb ./publish
 
       - name: Build db and metadb file
         env:
