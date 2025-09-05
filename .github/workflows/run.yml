@@ -32,7 +32,7 @@ jobs:
         shell: bash
 
       - name: Delete current tag and release
-        uses: dev-drprasad/delete-tag-and-release@v1.0
+        uses: dev-drprasad/delete-tag-and-release@v1.1
         with:
           tag_name: latest
           github_token: ${{ secrets.GITHUB_TOKEN }}
