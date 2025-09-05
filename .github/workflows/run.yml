@@ -312,7 +312,7 @@ jobs:
 
       - name: Get geoip relative files
         run: |
-          cp -f ./geoip/*.mmdb ./geoip/*.dat ./geoip/*.db ./geoip/*.metadb ./publish
+          cp -f ./geoip/*.mmdb ./geoip/*.dat ./geoip/*.metadb ./publish
 
       - name: Build db and metadb file
         env:
