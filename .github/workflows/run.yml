@@ -40,25 +40,26 @@ jobs:
           repo: 1molCu/geodatabuild
 
       - name: Checkout v2fly/domain-list-community
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: v2fly/domain-list-community
           path: community
 
       - name: Checkout cokebar/gfwlist2dnsmasq
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
 
       - name: Checkout DustinWin/geoip
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: DustinWin/geoip
+          ref: mihomo-geodata
           path: geoip
 
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
           go-version-file: ./community/go.mod
           cache-dependency-path: ./community/go.sum
