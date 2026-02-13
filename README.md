@@ -1,5 +1,3 @@
-# 简介 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Loyalsoldier/v2ray-rules-dat/total?logo=github) ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/Loyalsoldier/v2ray-rules-dat/latest/total?logo=github) [![jsdelivr stats](https://data.jsdelivr.com/v1/package/gh/Loyalsoldier/v2ray-rules-dat/badge?style=rounded)](https://www.jsdelivr.com/package/gh/Loyalsoldier/v2ray-rules-dat)
-
 
 ## 致谢
 
