@@ -30,10 +30,6 @@ jobs:
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Checkout the "hidden" branch of this repo
-        uses: actions/checkout@v6
-        with:
-          ref: hidden
 
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v6
@@ -94,12 +90,6 @@ jobs:
           curl -sSL ${CUSTOM_DIRECT} | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > direct-reserve.txt
           curl -sSL ${CUSTOM_PROXY} | grep -Ev ":@cn" | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > proxy-reserve.txt
 
-      - name: Add proxy, direct and reject domains from "hidden" branch to appropriate temp files
-        run: |
-          cat proxy.txt >> temp-proxy.txt
-          cat direct.txt >> temp-direct.txt
-          cat reject.txt >> temp-reject.txt
-
       - name: Sort and generate redundant lists
         run: |
           cat temp-proxy.txt | sort --ignore-case -u > proxy-list-with-redundant
@@ -121,12 +111,6 @@ jobs:
           diff ./direct-list-deleted-sort ./direct-list-with-redundant | awk '/^>/{print $2}' > ./direct-list-without-redundant
           diff ./proxy-list-deleted-sort ./proxy-list-with-redundant | awk '/^>/{print $2}' > ./proxy-list-without-redundant
           diff ./reject-list-deleted-sort ./reject-list-with-redundant | awk '/^>/{print $2}' > ./reject-list-without-redundant
-
-      - name: Remove domains from "need-to-remove" lists in "hidden" branch
-        run: |
-          diff ./direct-need-to-remove.txt ./direct-list-without-redundant | awk '/^>/{print $2}' > temp-cn.txt
-          diff ./proxy-need-to-remove.txt ./proxy-list-without-redundant | awk '/^>/{print $2}' > temp-geolocation-\!cn.txt
-          diff ./reject-need-to-remove.txt ./reject-list-without-redundant | awk '/^>/{print $2}' > temp-category-ads-all.txt
 
       - name: Write lists to data directory
         run: |
